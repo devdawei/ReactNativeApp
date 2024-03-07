@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, ScrollView} from 'react-native';
 import Screen from '../tool/Screen';
-import NestedScrollManager from './NestedScrollManager';
+import NestedScrollManager from '../../managers/NestedScrollManager';
 import {PageShowOrHideInfo} from '../page/PageShowOrHideInfo';
 
 export interface ScrollPageViewBasePageProps {

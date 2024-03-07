@@ -19,7 +19,7 @@ import ScrollPageView, {
 import TestScrollPageViewSubPageA from './TestScrollPageViewSubPageA';
 import TestScrollPageViewSubPageB from './TestScrollPageViewSubPageB';
 import TestScrollPageViewSubPageC from './TestScrollPageViewSubPageC';
-import NestedScrollManager from '../../bases/view/NestedScrollManager';
+import NestedScrollManager from '../../managers/NestedScrollManager';
 import NaviButton from '../../bases/navi/NaviButton';
 import LearnPage from '../learn/LearnPage';
 
