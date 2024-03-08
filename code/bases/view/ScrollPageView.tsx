@@ -179,7 +179,7 @@ export default class ScrollPageView
   }
 
   getItemLayout = (
-    data: Array<ScrollPageViewItem> | null | undefined,
+    data: ArrayLike<ScrollPageViewItem> | null | undefined,
     index: number,
   ) => {
     // console.log('getItemLayout: ', index);
