@@ -5,127 +5,63 @@
  * @format
  */
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import Nav from '@/bases/navigation/nav';
+import { NewAppScreen } from '@react-native/new-app-screen';
+import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Button from './code/bases/button/Button';
-import Navi from './code/bases/navi/Navi';
-import TestPage from './code/modules/test/TestPage';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
+function App() {
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <SafeAreaProvider>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <AppContent />
+    </SafeAreaProvider>
+  );
+}
+
+function AppContent() {
+  const safeAreaInsets = useSafeAreaInsets();
+
+  const onPressExample = () => {
+    // 跳转到示例页面
+    console.log('点击了示例按钮')
+    Nav.present('ExamplesPage')
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={[styles.example, {top: safeAreaInsets.top}]}>
+        <Text style={styles.text} onPress={onPressExample}>点击打开示例页面</Text>
+      </View>
+      <NewAppScreen
+        templateFileName="App.tsx"
+        safeAreaInsets={{top: safeAreaInsets.top + 44, bottom: safeAreaInsets.bottom, left: safeAreaInsets.left, right: safeAreaInsets.right}}
+      />
     </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Button
-            style={styles.button}
-            data={'打开测试页面'}
-            onPress={() => {
-              Navi.open(TestPage.pageName);
-            }}
-          />
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  button: {
-    height: 44,
+  example: {
+    position: 'absolute',
     backgroundColor: 'cyan',
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: 0,
+    right: 0,
+    height: 44,
+    zIndex: 999,
+  },
+  text: {
+    textDecorationLine: 'underline',
   },
 });
 

@@ -2,55 +2,32 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
+import { AppRegistry } from 'react-native';
 import App from './App';
-import {name as appName} from './app.json';
+import { name as appName } from './app.json';
 
-import Screen from './code/bases/tool/Screen';
-import PageStatusManager from './code/managers/PageStatusManager';
-
-import TestPage from './code/modules/test/TestPage';
-import TestBannerPage from './code/modules/test/TestBannerPage';
-import TestNativeViewPage from './code/modules/test/TestNativeViewPage';
-import TestToastPage from './code/modules/test/TestToastPage';
-import TestAlertPage from './code/modules/test/TestAlertPage';
-import TestSegmentedViewPage from './code/modules/test/TestSegmentedViewPage';
-import TestScrollPageViewPage from './code/modules/test/TestScrollPageViewPage';
-import TestScrollTabPage from './code/modules/test/TestScrollTabPage';
-import TestStorageManagerPage from './code/modules/test/TestStorageManagerPage';
-
-import RecommendPage from './code/modules/Recommend/RecommendPage';
-import LearnPage from './code/modules/learn/LearnPage';
+// 模版页
+import TemplatePage from '@bases/page/TemplatePage';
+// 示例列表页
+import ExamplesPage from '@examples/ExamplesPage';
+// 示例-Banner
+import ExampleBannerPage from '@examples/ExampleBannerPage';
+// 示例-原生UI组件
+import ExampleNativeComponentPage from '@examples/ExampleNativeComponentPage';
+// 示例-SegmentedView
+import ExampleSegmentedPage from '@examples/ExampleSegmentedPage';
+// 示例-ScrollPageView
+import ExampleScrollPageViewPage from '@examples/ExampleScrollPageViewPage';
+// 示例-本地存储
+import ExampleLocalStoragePage from '@examples/ExampleLocalStoragePage';
 
 AppRegistry.registerComponent(appName, () => App);
 
-Screen.configStatusBarHeight();
-PageStatusManager.manager.config();
+AppRegistry.registerComponent('TemplatePage', () => TemplatePage);
 
-AppRegistry.registerComponent(TestPage.pageName, () => TestPage);
-AppRegistry.registerComponent(TestBannerPage.pageName, () => TestBannerPage);
-AppRegistry.registerComponent(TestToastPage.pageName, () => TestToastPage);
-AppRegistry.registerComponent(TestAlertPage.pageName, () => TestAlertPage);
-AppRegistry.registerComponent(
-  TestNativeViewPage.pageName,
-  () => TestNativeViewPage,
-);
-AppRegistry.registerComponent(
-  TestSegmentedViewPage.pageName,
-  () => TestSegmentedViewPage,
-);
-AppRegistry.registerComponent(
-  TestScrollPageViewPage.pageName,
-  () => TestScrollPageViewPage,
-);
-AppRegistry.registerComponent(
-  TestScrollTabPage.pageName,
-  () => TestScrollTabPage,
-);
-AppRegistry.registerComponent(
-  TestStorageManagerPage.pageName,
-  () => TestStorageManagerPage,
-);
-
-AppRegistry.registerComponent(RecommendPage.pageName, () => RecommendPage);
-AppRegistry.registerComponent(LearnPage.pageName, () => LearnPage);
+AppRegistry.registerComponent('ExamplesPage', () => ExamplesPage);
+AppRegistry.registerComponent('ExampleBannerPage', () => ExampleBannerPage);
+AppRegistry.registerComponent('ExampleNativeComponentPage', () => ExampleNativeComponentPage);
+AppRegistry.registerComponent('ExampleSegmentedPage', () => ExampleSegmentedPage);
+AppRegistry.registerComponent('ExampleScrollPageViewPage', () => ExampleScrollPageViewPage);
+AppRegistry.registerComponent('ExampleLocalStoragePage', () => ExampleLocalStoragePage);

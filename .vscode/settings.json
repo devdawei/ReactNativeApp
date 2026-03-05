@@ -1,0 +1,8 @@
+{
+  // 缩进使用空格
+  "editor.insertSpaces": true,
+  // 一个制表符等于 2 个空格
+  "editor.tabSize": 2,
+  // 可选：当文件类型不确定时，默认使用 2 个空格缩进
+  "editor.detectIndentation": false
+}
